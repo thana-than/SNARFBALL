@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnc7kg0gn0wa4"]
+
+[ext_resource type="PackedScene" uid="uid://dyul43uttiupk" path="res://scenes/managers/fmod_bank_loader.tscn" id="1_uwrxv"]
+
+[node name="Game" type="Node2D"]
+
+[node name="FmodBankLoader" parent="." instance=ExtResource("1_uwrxv")]
+
+[node name="GlobalListener" type="FmodListener2D" parent="."]
+is_locked = true
