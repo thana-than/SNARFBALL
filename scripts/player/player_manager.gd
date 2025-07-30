@@ -16,20 +16,31 @@ signal player_left(player)
 # the existence of a key in this dictionary means this player is joined.
 # use get_player_data() and set_player_data() to use this dictionary.
 var player_data: Dictionary = {}
+var player_prefab = preload("res://scenes/entities/Player.tscn")
 
-const MAX_PLAYERS = 8
+const MAX_PLAYERS = 4
+
+func instantiate_player(index: int, device: int):
+	var entity = player_prefab.instantiate()
+	entity.name = "Player " + str(index);
+
+	var player_input: PlayerInput = entity.get_node("PlayerInput")
+	player_input.device_id = device
+
+	add_child(entity)
+	return entity
 
 func join(device: int):
 	var player = next_player()
 	if player >= 0:
-		print("Player joined. Device ID: " + str(device))
 		# # initialize default player data here
-		# # "team" and "car" are remnants from my game just to provide an example
+		var entity = instantiate_player(player, device)
 		player_data[player] = {
 			"device": device,
-			# "team":0,
-			# "car":"muscle",
+			"entity": entity,
 		}
+
+		print("Player joined. Device ID: " + str(device))
 		player_joined.emit(player)
 
 func leave(player: int):
