@@ -17,17 +17,12 @@ signal player_left(player)
 # use get_player_data() and set_player_data() to use this dictionary.
 var logger := Logger.new("PlayerManager")
 var player_data: Dictionary = {}
-var player_prefab = preload("res://scenes/entities/Player.tscn")
+var player_factory = preload("res://scripts/factories/factory_snarf_body_player.gd").new()
 
 const MAX_PLAYERS = 4
 
 func instantiate_player(index: int, device: int):
-	var entity = player_prefab.instantiate()
-	entity.name = "Player " + str(index);
-
-	var player_input: PlayerInput = entity.get_node("PlayerInput")
-	player_input.device_id = device
-
+	var entity = player_factory.instantiate(index, device)
 	add_child(entity)
 	return entity
 
