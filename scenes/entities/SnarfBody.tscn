@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdq7am4otvxmj"]
+
+[ext_resource type="Script" uid="uid://damumwkwgl6d4" path="res://scripts/snarf_body/snarf_body.gd" id="1_hd8p6"]
+
+[node name="SnarfBody" type="CharacterBody2D"]
+script = ExtResource("1_hd8p6")
+metadata/_custom_type_script = "uid://damumwkwgl6d4"
