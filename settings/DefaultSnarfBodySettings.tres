@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SnarfBodySettings" load_steps=2 format=3 uid="uid://c3pyy1gi2acnq"]
+
+[ext_resource type="Script" uid="uid://dbv0rqcnoqkdq" path="res://scripts/snarf_body/snarf_body_settings.gd" id="1_qstmk"]
+
+[resource]
+script = ExtResource("1_qstmk")
+base_speed = 10000.0
+metadata/_custom_type_script = "uid://dbv0rqcnoqkdq"
