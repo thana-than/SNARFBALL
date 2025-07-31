@@ -1,5 +1,3 @@
-extends Node
-
 var body_prefab = preload("res://scenes/entities/SnarfBody.tscn")
 var input_handler_prefab = preload("res://scenes/input/PlayerInput.tscn")
 
