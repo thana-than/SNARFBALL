@@ -39,6 +39,7 @@ FmodManager="*res://addons/fmod/FmodManager.gd"
 MultiplayerInput="*res://addons/multiplayer_input/multiplayer_input.gd"
 PlayerManager="*res://scripts/player/player_manager.gd"
 SceneManager="*res://scripts/scene_manager/scene_manager.gd"
+ScoreManager="*res://scripts/score_manager/score_manager.gd"
 
 [dotnet]
 
