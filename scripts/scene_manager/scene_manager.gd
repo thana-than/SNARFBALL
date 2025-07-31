@@ -8,10 +8,12 @@ var logger := Logger.new("SceneManager")
 var current_scene = null
 
 var initial_scene := "res://scenes/game.tscn"
+var scene_dict: Dictionary = {} ## Simple cache for packed scene resources. Should prevent needed to reread from disk as often.
 
 func _ready() -> void:
+	scene_dict[initial_scene] = load(initial_scene)
 	call_deferred("_load_scene", initial_scene, false, false)
-	
+
 func _load_scene(scene_path: String, delete: bool, hide: bool) -> void:
 	logger.log("Loading scene from path %s - delete: %s - hide: %s" %[scene_path, delete, hide])
 	var tree := get_tree()
@@ -26,7 +28,15 @@ func _load_scene(scene_path: String, delete: bool, hide: bool) -> void:
 			tree.root.remove_child(current_scene)
 			logger.log("current_scene removed from tree.")
 
-	var scene = load(scene_path).instantiate()
+	var packed_scene = null
+	if scene_dict.has(scene_path):
+		packed_scene = scene_dict[scene_path]
+
+	if packed_scene == null:
+		packed_scene = load(scene_path)
+		scene_dict[scene_path] = packed_scene
+
+	var scene = packed_scene.instantiate()
 	tree.root.add_child(scene)
 	tree.set_current_scene(scene)
 	current_scene = scene
