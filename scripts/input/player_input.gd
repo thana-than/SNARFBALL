@@ -21,7 +21,7 @@ func _get_look_input():
 	return _look
 
 func _get_local_mouse_look():
-	var _mouse = (get_viewport().get_mouse_position() - position) / mousePixelsPerUnit
+	var _mouse = (get_viewport().get_mouse_position() - global_position) / mousePixelsPerUnit
 	_mouse = _mouse.limit_length(1.0)
 	return _mouse
 
